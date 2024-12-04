@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ExpenseTracker" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/blueDacnis</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Primary and Secondary Colors -->
+        <item name="colorPrimary">@color/chillyWhite</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSecondary">@color/blueDacnis</item>
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/black</item>
+
+        <!-- Button Style (Text and Background) -->
+        <item name="android:buttonStyle">@style/ButtonStyle</item>
+    </style>
+
+    <!-- Theme for ExpenseTracker, inheriting from the base theme -->
+    <style name="Theme.ExpenseTracker" parent="Base.Theme.ExpenseTracker" />
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_animation</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_animation</item>
+    </style>
+
+
+    <style name="ButtonStyle" parent="Widget.Material3.Button">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+</resources>

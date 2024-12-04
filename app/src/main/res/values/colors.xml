@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="nyctophileBlue">#080E2C</color>
+    <color name="blueDacnis">#44D6E9</color>
+    <color name="chillyWhite">#ECF4F1</color>
+    <color name="morningBreeze">#D1E0DB</color>
+
+    <color name="red">#FF3907</color>
+    <color name="green">#4CAF50</color>
+
+
+        <color name="light_button_background">#FFFFFF</color>
+        <color name="light_button_border">#000000</color>
+
+        <color name="dark_button_background">#000000</color>
+        <color name="dark_button_border">#FFFFFF</color>
+
+
+</resources>

@@ -1,0 +1,106 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSecondary"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="48dp"
+        android:orientation="vertical"
+        android:padding="28dp">
+
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/welcomeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Welcome"
+            android:textSize="32sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="?attr/colorOnPrimary" />
+
+        <!-- To Expense Tracker Text -->
+        <TextView
+            android:id="@+id/toExpenseTrackerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="to Expense Tracker"
+            android:textSize="22sp"
+            android:fontFamily="sans-serif-black"
+            android:textColor="?attr/colorOnPrimary" />
+
+        <!-- Wallet Image -->
+        <ImageView
+            android:id="@+id/wallet"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/app_icon"
+            app:tint="@color/chillyWhite" />
+
+        <!-- Description Text -->
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toExpenseTrackerText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:paddingHorizontal="32dp"
+            android:text="Track your expenses, manage budgets, and take control of your finances with ease."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnPrimary" />
+
+        <!-- Create a Free Account Text -->
+        <TextView
+            android:id="@+id/createAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="102dp"
+            android:text="Create a free account"
+            android:textSize="14sp"
+            android:textColor="?attr/colorOnPrimary" />
+
+        <!-- Continue with Email Button -->
+        <Button
+            android:id="@+id/signup_btn"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:background="@drawable/button_background_transparent"
+            android:layout_height="48dp"
+            android:text="Continue with Email" />
+
+        <!-- Continue with Google Button -->
+        <Button
+            android:id="@+id/google_btn"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/button_background"
+            android:text="Continue with Google"
+            android:textSize="16sp"/>
+
+        <!-- Sign In Link -->
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:clickable="true"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="Already a member? Login"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</RelativeLayout>

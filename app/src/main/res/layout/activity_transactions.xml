@@ -1,0 +1,109 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransactionsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorPrimary"
+        android:orientation="vertical">
+
+        <!-- Toolbar Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar"
+            android:background="?attr/colorSecondary"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/lefticon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Back"
+                android:src="@drawable/arrow_back"
+                app:tint="?attr/colorOnPrimary" />
+
+            <TextView
+                android:id="@+id/transactionstxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Transactions"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="20sp" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Sort Icon at the end of the Toolbar -->
+            <ImageView
+                android:id="@+id/sortIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/baseline_sort_24"
+                android:contentDescription="Sort Icon"
+                app:tint="?attr/colorOnPrimary" />
+        </LinearLayout>
+        <!-- Divider Line -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:id="@+id/divider"
+            android:background="@color/black" />
+
+        <!-- Search and Filter Section -->
+        <LinearLayout
+            android:id="@+id/row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:layout_margin="12dp"
+            android:gravity="center_vertical">
+
+            <!-- Search Bar -->
+            <EditText
+                android:id="@+id/search_bar"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.7"
+                android:hint="Search transactions"
+                android:padding="10dp"
+                android:background="@drawable/button_background_transparent"
+                android:textColor="?attr/colorOnPrimary"
+                android:drawableLeft="@drawable/baseline_search_24"
+                android:drawableTint="?attr/colorOnPrimary"/>
+
+            <ImageView
+                android:id="@+id/filter"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.15"
+                android:layout_marginStart="8dp"
+                android:padding="10dp"
+                android:src="@drawable/baseline_filter_alt_24"
+                android:textSize="16sp"
+                app:tint="?attr/colorOnPrimary" />
+
+        </LinearLayout>
+
+        <!-- RecyclerView for Transactions -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"/>
+    </LinearLayout>
+</RelativeLayout>

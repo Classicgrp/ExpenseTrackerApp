@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".AddIncomeFragment">
+
+    <!-- Date and Time Picker -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/icon_calendar"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="Pick Date"
+            android:src="@drawable/baseline_calendar_today_24" />
+
+        <TextView
+            android:id="@+id/text_selected_datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Select Date and Time"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <!-- Amount Input -->
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Enter amount"
+        android:background="@drawable/rounded_edit_text" />
+
+    <!-- Payment Method Input -->
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment Method"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etPaymentMethod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter payment method"
+        android:focusable="false"
+        android:clickable="true"
+        android:background="@drawable/rounded_edit_text" />
+
+    <!-- Category Input -->
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter category"
+        android:focusable="false"
+        android:clickable="true"
+        android:background="@drawable/rounded_edit_text" />
+
+    <!-- Description Input -->
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="16sp" />
+    <EditText
+        android:id="@+id/etDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter description"
+        android:background="@drawable/rounded_edit_text" />
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+</LinearLayout>
