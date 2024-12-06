@@ -13,7 +13,6 @@
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorPrimary"
         android:layout_above="@id/divider"
         android:layout_marginBottom="76dp"
         android:fitsSystemWindows="true" >
@@ -46,9 +45,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemIconTint="?attr/colorOnPrimary"
+        app:itemIconTint="?attr/colorPrimary"
         android:background="?attr/colorSecondary"
-        app:itemTextColor="?attr/colorOnPrimary"
+        app:itemTextColor="?attr/colorOnBackground"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_menu" />
 

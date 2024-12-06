@@ -1,31 +1,54 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.ExpenseTracker" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/blueDacnis</item>
+    <style name="Base.Theme.ExpenseTracker" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryLight</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimaryLight</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="android:statusBarColor">@color/colorSecondary</item>
         <item name="android:windowLightStatusBar">true</item>
-
-        <!-- Primary and Secondary Colors -->
-        <item name="colorPrimary">@color/chillyWhite</item>
-        <item name="colorOnPrimary">@color/black</item>
-        <item name="colorSecondary">@color/blueDacnis</item>
-
-        <!-- Text Colors -->
-        <item name="android:textColorPrimary">@color/black</item>
-
-        <!-- Button Style (Text and Background) -->
-        <item name="android:buttonStyle">@style/ButtonStyle</item>
+        <item name="android:windowBackground">@color/backgroundLight</item>
+        <item name="android:colorBackground">@color/backgroundLight</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/onError</item>
+        <item name="android:textColorPrimary">@color/textPrimaryLight</item>
+        <item name="android:textColorSecondary">@color/textSecondaryLight</item>
     </style>
 
-    <!-- Theme for ExpenseTracker, inheriting from the base theme -->
     <style name="Theme.ExpenseTracker" parent="Base.Theme.ExpenseTracker" />
-
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in_animation</item>
         <item name="android:windowExitAnimation">@anim/slide_out_animation</item>
     </style>
-
-
-    <style name="ButtonStyle" parent="Widget.Material3.Button">
-        <item name="android:textColor">?attr/colorOnPrimary</item>
-    </style>
 </resources>
+
+
+
+
+
+
+
+<!--<resources xmlns:tools="http://schemas.android.com/tools">-->
+<!--    <style name="Base.Theme.ExpenseTracker" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--        <item name="android:statusBarColor">@color/colorAccent</item>-->
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+<!--        <item name="android:windowBackground">@color/white</item>-->
+<!--        <item name="colorSecondary">@color/colorAccent</item>-->
+
+<!--    </style>-->
+<!--    <style name="Theme.ExpenseTracker" parent="Base.Theme.ExpenseTracker" />-->
+<!--</resources>-->
+<!--            <item name="colorPrimary">@color/chillyWhite</item>-->
+<!--            <item name="colorOnPrimary">@color/black</item>-->
+
+<!--            <item name="colorAccent">@color/colorAccent</item>-->
+
+<!--            <item name="android:textColorPrimary">@color/black</item>-->
+
+<!--            <item name="android:colorBackground">@color/background_light</item>-->
+
+<!--<style name="DialogAnimation">-->
+<!--<item name="android:windowEnterAnimation">@anim/slide_in_animation</item>-->
+<!--<item name="android:windowExitAnimation">@anim/slide_out_animation</item>-->
+<!--</style>-->

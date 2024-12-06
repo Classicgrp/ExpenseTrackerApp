@@ -23,7 +23,7 @@ public class AnalysisFragment extends Fragment {
     private ViewPager2 viewPager;
 
     public AnalysisFragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -64,9 +64,6 @@ public class AnalysisFragment extends Fragment {
                     break;
                 case 2:
                     tab.setText("Month");
-                    break;
-                case 3:
-                    tab.setText("Custom");
                     break;
             }
         }).attach();

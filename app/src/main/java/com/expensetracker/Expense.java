@@ -10,7 +10,6 @@ public class Expense {
     private Date date;
     private String type;
 
-    // Default constructor required for calls to DataSnapshot.getValue(Expense.class)
     public Expense() {
     }
 

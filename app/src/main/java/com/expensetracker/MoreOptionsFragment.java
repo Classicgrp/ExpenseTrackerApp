@@ -19,7 +19,6 @@ public class MoreOptionsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more_options, container, false);
 
-        view.findViewById(R.id.back_button).setOnClickListener(v -> requireActivity().getOnBackPressedDispatcher().onBackPressed());
 
         view.findViewById(R.id.settings_option).setOnClickListener(v -> {
             // Navigate to Settings Activity
@@ -40,7 +39,6 @@ public class MoreOptionsFragment extends Fragment {
         });
 
         view.findViewById(R.id.about_option).setOnClickListener(v -> {
-            // Navigate to About Activity
             Intent intent = new Intent(getActivity(), AboutActivity.class);
             startActivity(intent);
         });
@@ -48,12 +46,12 @@ public class MoreOptionsFragment extends Fragment {
         view.findViewById(R.id.logout_option).setOnClickListener(v -> {
             // Handle logout
             FirebaseAuth.getInstance().signOut();
-            Intent intent = new Intent(getActivity(), SigninActivity.class);
+            Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
             getActivity().finish();
         });
 
-        // Add OnClickListener for CardViews
+
         view.findViewById(R.id.budget_card).setOnClickListener(v -> {
             // Navigate to Budgets Activity
             Intent intent = new Intent(getActivity(), BudgetsActivity.class);
@@ -72,10 +70,10 @@ public class MoreOptionsFragment extends Fragment {
             startActivity(intent);
         });
 
-        view.findViewById(R.id.views_card).setOnClickListener(v -> {
-            // Navigate to Transaction Activity
-//            Intent intent = new Intent(getActivity(), TransactionActivity.class);
-//            startActivity(intent);
+        view.findViewById(R.id.reports_card).setOnClickListener(v -> {
+
+            Intent intent = new Intent(getActivity(), ReportsActivity.class);
+            startActivity(intent);
         });
 
         return view;

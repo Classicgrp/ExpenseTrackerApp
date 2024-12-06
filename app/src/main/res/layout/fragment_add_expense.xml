@@ -1,154 +1,116 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="20dp">
+    android:padding="16dp"
+    tools:context=".AddExpenseFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:padding="16dp">
 
-        <!-- Date and Time Pickers -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="8dp">
-
-            <ImageView
-                android:id="@+id/icon_calendar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:contentDescription="@string/pick_date"
-                android:src="@drawable/baseline_calendar_today_24"
-                app:tint="?attr/colorOnPrimary"/>
-
-            <TextView
-                android:id="@+id/text_selected_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/select_date"
-                android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/icon_clock"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="16dp"
-                android:contentDescription="@string/pick_time"
-                android:src="@drawable/baseline_access_time_24"
-                app:tint="?attr/colorOnPrimary" />
-
-            <TextView
-                android:id="@+id/text_selected_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="@string/select_time"
-                android:textSize="16sp" />
-        </LinearLayout>
-
-        <!-- Amount Section -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:gravity="center_horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Amount -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@string/amount"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:layout_marginBottom="16dp">
 
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/amount_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="@string/amount"
+                    android:textColorHint="?attr/colorOnBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Category -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="8dp">
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/icon_category"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/baseline_arrow_drop_down_24"
+                    android:contentDescription="@string/select_category"
+                    app:tint="?attr/colorOnBackground" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="8dp"
-                    android:text="Ksh: "
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edit_text_amount"
+                    android:id="@+id/selected_category_textview"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/enter_amount"
-                    android:inputType="numberDecimal" />
+                    android:hint="@string/select_category"
+                    android:textColor="?attr/colorOnBackground"
+                    android:textSize="16sp" />
+
             </LinearLayout>
-        </LinearLayout>
-        <!-- Category Picker Section -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
 
-            <TextView
-                android:id="@+id/text_category"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@string/category"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/selected_category_text_view"
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="12dp"
-                android:text="@string/select_category"
-                android:drawableEnd="@drawable/baseline_arrow_drop_down_24" />
-        </LinearLayout>
+                android:layout_marginBottom="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingTop="20dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/description"
+                    android:textColorHint="?attr/colorOnBackground" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="@string/description"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/edit_text_description"
+            <!-- Date and Time Picker -->
+            <LinearLayout
+                android:id="@+id/select_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/add_description"
-                android:inputType="text" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <ImageView
+                    android:id="@+id/icon_calendar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/baseline_calendar_today_24"
+                    android:contentDescription="@string/select_date"
+                    app:tint="?attr/colorOnBackground" />
+
+                <TextView
+                    android:id="@+id/text_selected_datetime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:textSize="16sp"
+                    android:textColor="?attr/colorOnBackground" />
+
+            </LinearLayout>
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:backgroundTint="?attr/colorPrimary"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="16sp" />
         </LinearLayout>
-
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/save_expense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button_background"
-            android:text="@string/save"
-            style="@style/ButtonStyle"
-            android:padding="12dp" />
-    </LinearLayout>
-</ScrollView>
-
-<!--    https://www.svgrepo.com/vectors/investments/multicolor/-->
+    </ScrollView>
+</RelativeLayout>

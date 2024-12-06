@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class TransactionsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TransactionAdapter transactionAdapter;
     private List<FinancialTransaction> transactionList;
+    private LinearLayout emptyStateLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +42,12 @@ public class TransactionsActivity extends AppCompatActivity {
 
         ImageView leftIcon = findViewById(R.id.lefticon);
         leftIcon.setOnClickListener(view -> finish());
-        // Initialize the floating action button
+
+        EditText searchBar = findViewById(R.id.search_bar);
+        searchBar.requestFocus();
+
         ImageView filterIcon = findViewById(R.id.filter);
-        filterIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showBottomDialog();
-            }
-        });
+        filterIcon.setOnClickListener(v -> showBottomDialog());
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() == null) {
@@ -57,7 +57,6 @@ public class TransactionsActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         String userId = mAuth.getCurrentUser().getUid();
-
         incomeRef = db.collection("users").document(userId).collection("income");
         expensesRef = db.collection("users").document(userId).collection("expenses");
 
@@ -66,6 +65,8 @@ public class TransactionsActivity extends AppCompatActivity {
         transactionList = new ArrayList<>();
         transactionAdapter = new TransactionAdapter(transactionList, this::onTransactionSelected);
         recyclerView.setAdapter(transactionAdapter);
+
+        emptyStateLayout = findViewById(R.id.empty_state_layout);
 
         loadTransactions();
     }
@@ -81,7 +82,7 @@ public class TransactionsActivity extends AppCompatActivity {
                     expense.setId(document.getId());
                     transactionList.add(new FinancialTransaction(expense.getId(), expense.getAmount(), expense.getCategory(), expense.getDate(), "Expense"));
                 }
-                transactionAdapter.notifyDataSetChanged();
+                updateUI();
             } else {
                 Toast.makeText(TransactionsActivity.this, "Error loading expenses: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -95,11 +96,22 @@ public class TransactionsActivity extends AppCompatActivity {
                     income.setId(document.getId());
                     transactionList.add(new FinancialTransaction(income.getId(), income.getAmount(), income.getCategory(), income.getDate(), "Income"));
                 }
-                transactionAdapter.notifyDataSetChanged();
+                updateUI();
             } else {
                 Toast.makeText(TransactionsActivity.this, "Error loading income: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void updateUI() {
+        if (transactionList.isEmpty()) {
+            emptyStateLayout.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            emptyStateLayout.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+        transactionAdapter.notifyDataSetChanged();
     }
 
     private void onTransactionSelected(FinancialTransaction transaction) {
@@ -108,7 +120,6 @@ public class TransactionsActivity extends AppCompatActivity {
         intent.putExtra("transaction_type", transaction.getType());
         startActivity(intent);
     }
-
 
     private void showBottomDialog() {
         final Dialog dialog = new Dialog(this);
@@ -119,27 +130,13 @@ public class TransactionsActivity extends AppCompatActivity {
         LinearLayout incomeLayout = dialog.findViewById(R.id.layoutIncome);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-        expenseLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-
-            }
-        });
-        incomeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                Toast.makeText(TransactionsActivity.this, "Income", Toast.LENGTH_SHORT).show();
-            }
+        expenseLayout.setOnClickListener(v -> dialog.dismiss());
+        incomeLayout.setOnClickListener(v -> {
+            dialog.dismiss();
+            Toast.makeText(TransactionsActivity.this, "Income", Toast.LENGTH_SHORT).show();
         });
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
+        cancelButton.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);

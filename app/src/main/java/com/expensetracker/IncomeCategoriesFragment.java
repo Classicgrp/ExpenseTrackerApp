@@ -39,14 +39,14 @@ public class IncomeCategoriesFragment extends Fragment {
 
         // Initialize the categories list
         incomeCategories = new ArrayList<>();
-        incomeCategories.add(new IncomeCategory("Salary", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Business", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Investments", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Freelancing", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Rent", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Pension", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Savings", R.drawable.more));
-        incomeCategories.add(new IncomeCategory("Other", R.drawable.more));
+        incomeCategories.add(new IncomeCategory("Salary", R.drawable.ic_salary));
+        incomeCategories.add(new IncomeCategory("Business", R.drawable.ic_business));
+        incomeCategories.add(new IncomeCategory("Investments", R.drawable.ic_investments));
+        incomeCategories.add(new IncomeCategory("Freelancing", R.drawable.ic_freelancer));
+        incomeCategories.add(new IncomeCategory("Rent", R.drawable.ic_rent));
+        incomeCategories.add(new IncomeCategory("Pension", R.drawable.ic_pension));
+        incomeCategories.add(new IncomeCategory("Savings", R.drawable.ic_savings));
+        incomeCategories.add(new IncomeCategory("Other", R.drawable.ic_more));
 
         adapter = new IncomeCategoriesAdapter(incomeCategories);
         recyclerView.setAdapter(adapter);

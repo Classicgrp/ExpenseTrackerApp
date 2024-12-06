@@ -57,7 +57,6 @@ public class BottomSheetCategoryDialog extends BottomSheetDialogFragment {
         adapter = new ExpenseCategoriesAdapter(expenseCategories, listener);  // Pass the listener to the adapter
         recyclerView.setAdapter(adapter);
 
-        // Load additional categories from Firestore
         loadCategoriesFromFirestore();
 
         view.findViewById(R.id.button_add_category).setOnClickListener(v -> {
@@ -86,7 +85,7 @@ public class BottomSheetCategoryDialog extends BottomSheetDialogFragment {
                         }
                         adapter.notifyDataSetChanged();
                     } else {
-                        // Handle errors here
+                        // errors
                     }
                 });
     }

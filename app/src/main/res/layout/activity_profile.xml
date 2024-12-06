@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/back"
-            android:src="@drawable/arrow_back"
+            android:src="@drawable/baseline_arrow_back_24"
             app:tint="?attr/colorOnPrimary" />
 
         <TextView
@@ -33,7 +33,6 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:text="@string/edit_profile"
-            android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp" />
 
 
@@ -45,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/toolbar"
-        android:background="?attr/colorOnPrimary" />
+        android:background="?attr/colorPrimary" />
 
     <!-- Input Fields -->
     <LinearLayout
@@ -55,6 +54,18 @@
         android:layout_below="@id/toolbar"
         android:orientation="vertical"
         android:padding="16dp">
+
+        <TextView
+            android:id="@+id/email_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/your_email"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:paddingVertical="8dp"
+            android:background="?attr/colorSurface"
+            android:paddingHorizontal="12dp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="start" />
 
         <EditText
             android:id="@+id/first_name"
@@ -75,17 +86,7 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
-        <TextView
-            android:id="@+id/email_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/your_email"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:paddingVertical="8dp"
-            android:background="?attr/colorSurface"
-            android:paddingHorizontal="12dp"
-            android:textColor="?attr/colorOnSurface"
-            android:gravity="start" />
+
 
         <EditText
             android:id="@+id/input_phone"
@@ -96,6 +97,14 @@
             android:layout_marginTop="12dp"
             android:padding="12dp"
             android:textSize="16sp" />
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:background="@drawable/button_background"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/change_password"
@@ -119,14 +128,7 @@
             android:textSize="16sp"
             android:clickable="true"
             android:focusable="true" />
-        <Button
-            android:id="@+id/save_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save"
-            android:background="@drawable/button_background"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="14sp" />
+
 
     </LinearLayout>
 

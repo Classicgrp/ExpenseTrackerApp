@@ -21,8 +21,7 @@ public class AnalysisPagerAdapter extends FragmentStateAdapter {
                 return new WeekFragment();
             case 2:
                 return new MonthFragment();
-            case 3:
-                return new CustomFragment();
+
             default:
                 return new DayFragment();
         }
@@ -30,6 +29,6 @@ public class AnalysisPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 3;
     }
 }

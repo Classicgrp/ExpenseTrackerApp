@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import androidx.appcompat.widget.SearchView;
+
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -112,6 +114,12 @@ public class HomeFragment extends Fragment {
         ImageView helpIcon = view.findViewById(R.id.help_icon);
         helpIcon.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), HelpActivity.class);
+            startActivity(intent);
+        });
+
+        SearchView searchView = view.findViewById(R.id.search_view);
+        searchView.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), TransactionsActivity.class);
             startActivity(intent);
         });
     }
