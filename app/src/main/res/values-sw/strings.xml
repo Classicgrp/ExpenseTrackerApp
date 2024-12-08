@@ -15,7 +15,6 @@
     <string name="forgot_password_link">Umesahau Nenosiri?</string>
     <string name="signup_link">Huna akaunti? Jisajili</string>
     <string name="welcome_back">Karibu tena</string>
-    <string name="hello_blank_fragment">Halo fragment tupu</string>
     <string name="change_password">Badilisha Nenosiri</string>
     <string name="current_password_hint">Nenosiri la Sasa</string>
     <string name="new_password_hint">Nenosiri Jipya</string>
@@ -47,12 +46,38 @@
     <string name="reset_data">Weka Data upya</string>
     <string name="help_support">Msaada na Usaidizi</string>
     <string name="faq">Maswali Yanayoulizwa Mara kwa Mara</string>
-    <string name="faq_content">Hapa unaweza kuongeza maudhui ya FAQ...</string>
+    <string name="faq_content">
+1. ExpenseTracker ni nini?
+ExpenseTracker inakusaidia kusimamia fedha zako kwa kuorodhesha mapato, matumizi, bajeti, na kutengeneza ripoti.\n\n
+2. Nitaongezaje matumizi au mapato?
+Bonyeza kitufe cha hatua kinachozunguka, jaza maelezo, na uhifadhi.\n\n
+3. Ni aina gani za ripoti ninaweza kutengeneza?
+Ripoti za matumizi na bajeti zinazoonyesha mgawanyo wa matumizi.\n\n
+4. Ninaweza kuona ripoti wapi?
+Angalia sehemu ya Ripoti.\n\n
+5. Sehemu ya Uchambuzi ni nini?
+Fuata mwelekeo wa kila siku na kila wiki na mapato, matumizi, na salio na mtazamo kwa siku.\n\n
+6. Je, ninaweza kuongeza kategoria maalum?
+Ndiyo, kwenye sehemu ya Kategoria.\n\n
+7. Ninawezaje kusimamia bajeti?
+Bonyeza kitufe kwenye ukurasa wa kwanza kuweka bajeti ya kila mwezi na kuziona kwenye sehemu ya bajeti.\n\n
+8. Ninaweza kuhariri au kufuta miamala?
+Ndiyo, kutoka kwenye Miamala au Nyumbani.\n\n
+9. Je, data yangu iko salama?
+Data imehifadhiwa kwa usalama na Firebase.\n\n
+10. Ninaweza kutumia ExpenseTracker nje ya mtandao?
+Unahitaji muunganisho wa intaneti kwa ajili ya mabadiliko.
+</string>
     <string name="contact_support">Wasiliana na Usaidizi</string>
-    <string name="contact_support_content">Ikiwa unahitaji msaada zaidi, tafadhali wasiliana na timu yetu ya usaidizi kupitia support@expensemanagerclassic.com.</string>
-    <string name="submit_ticket">Tuma Tiketi</string>
+    <string name="contact_support_content">
+Unahitaji msaada? Wasiliana nasi:\n\n
+Barua pepe: support@expensetracker.com\n
+Simu: +254 112277715
+</string>
+    <string name="submit_ticket">Wasilisha Tiketi</string>
 
-        <string name="pick_date">Chagua Tarehe</string>
+
+    <string name="pick_date">Chagua Tarehe</string>
         <string name="select_date">Chagua Tarehe</string>
         <string name="pick_time">Chagua Muda</string>
         <string name="select_time">Chagua Muda</string>
@@ -70,7 +95,6 @@
         <string name="error_preserving_user_details">Hitilafu katika kuhifadhi maelezo ya mtumiaji</string>
         <string name="search_hint">Tafuta...</string>
         <string name="welcome">Karibu!</string>
-        <string name="manage_expenses">Wacha tukusaidie kudhibiti matumizi yako.</string>
         <string name="expenses">Matumizi</string>
         <string name="expense_result">0.00</string>
         <string name="income">Mapato</string>

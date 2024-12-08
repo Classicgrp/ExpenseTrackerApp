@@ -53,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_margin="16dp">
 
         <TextView
             android:id="@+id/email_text_view"
@@ -62,7 +63,6 @@
             android:text="@string/your_email"
             android:textAppearance="?attr/textAppearanceBody1"
             android:paddingVertical="8dp"
-            android:background="?attr/colorSurface"
             android:paddingHorizontal="12dp"
             android:textColor="?attr/colorOnSurface"
             android:gravity="start" />
@@ -104,7 +104,8 @@
             android:text="@string/save"
             android:background="@drawable/button_background"
             android:textColor="?attr/colorOnPrimary"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"/>
 
         <TextView
             android:id="@+id/change_password"

@@ -80,7 +80,7 @@
                 android:layout_weight="0.7"
                 android:hint="Search transactions"
                 android:padding="10dp"
-                android:background="@drawable/button_background"
+                android:background="@drawable/button_background_transparent"
                 android:textColor="?attr/colorPrimary"
                 android:drawableLeft="@drawable/baseline_search_24"
                 android:drawableTint="?attr/colorPrimary" />
