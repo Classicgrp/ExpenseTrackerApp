@@ -28,6 +28,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.text.NumberFormat;
 
 public class HomeFragment extends Fragment {
 
@@ -199,7 +200,7 @@ public class HomeFragment extends Fragment {
                                 }
                             }
 
-                            expenseSetResult.setText(String.format("%.2f", totalExpenses));
+                            expenseSetResult.setText(String.format("%,.2f", totalExpenses));
                             loadIncomeAndUpdateBalance(userId);
                         } else {
                             Log.d("Firestore", "Error getting expenses: ", task.getException());
@@ -221,10 +222,10 @@ public class HomeFragment extends Fragment {
                             }
                         }
 
-                        incomeSetResult.setText(String.format("%.2f", totalIncome));
+                        incomeSetResult.setText(String.format("%,.2f", totalIncome));
 
                         double balance = totalIncome - totalExpenses;
-                        balanceValue.setText(String.format("%.2f", balance));
+                        balanceValue.setText(String.format("%,.2f", balance));
                     } else {
                         Log.d("Firestore", "Error getting income: ", task.getException());
                     }
