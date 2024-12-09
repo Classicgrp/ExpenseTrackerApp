@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.expensemanager" />
-                  <option name="mobileSdkAppId" value="1:123212012451:android:cc98f495840db378779816" />
-                  <option name="projectId" value="expense-manager-c" />
-                  <option name="projectNumber" value="123212012451" />
+                  <option name="appId" value="com.classic.expensetracker" />
+                  <option name="mobileSdkAppId" value="1:911154741660:android:b98a4f5fb4b602d33a4859" />
+                  <option name="projectId" value="expensetracker-classic" />
+                  <option name="projectNumber" value="911154741660" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

@@ -8,65 +8,79 @@
         android:id="@+id/icon_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="6"
+        android:columnCount="5"
         android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_more"
+            android:src="@drawable/charity"
             android:padding="8dp"
-            android:tag="ic_more"
+            android:tag="charity"
             android:contentDescription="Icon 1" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_home_24"
+            android:src="@drawable/childcare"
             android:padding="8dp"
-            android:tag="baseline_home_24"
+            android:tag="childcare"
             android:contentDescription="Icon 2" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_notifications_none_24"
+            android:src="@drawable/personal_care"
             android:padding="8dp"
-            android:tag="baseline_notifications_none_24"
+            android:tag="entertainment"
             android:contentDescription="Icon 3" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_calendar_today_24"
+            android:src="@drawable/fitness"
             android:padding="8dp"
-            android:tag="baseline_calendar_today_24"
+            android:tag="fitness"
             android:contentDescription="Icon 4" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_category_24"
+            android:src="@drawable/gifts"
             android:padding="8dp"
-            android:tag="baseline_category_24"
+            android:tag="gifts"
             android:contentDescription="Icon 5" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_clear_24"
+            android:src="@drawable/groceries"
             android:padding="8dp"
-            android:tag="baseline_clear_24"
+            android:tag="groceries"
             android:contentDescription="Icon 6" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_access_time_24"
+            android:src="@drawable/personal_care"
             android:padding="8dp"
-            android:tag="baseline_access_time_24"
+            android:tag="personal_care"
             android:contentDescription="Icon 7" />
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/baseline_view_list_24"
+            android:src="@drawable/pets"
             android:padding="8dp"
-            android:tag="baseline_view_list_24"
+            android:tag="pets"
             android:contentDescription="Icon 8" />
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/subscriptions"
+            android:padding="8dp"
+            android:tag="subscriptions"
+            android:contentDescription="Icon 9" />
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/transportation"
+            android:padding="8dp"
+            android:tag="transportation"
+            android:contentDescription="Icon 10" />
     </GridLayout>
 </RelativeLayout>
