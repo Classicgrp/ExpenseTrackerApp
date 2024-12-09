@@ -62,7 +62,6 @@ public class NotificationsActivity extends AppCompatActivity {
             requestNotificationPermissionAndSchedule();
         }
     }
-
     private void requestNotificationPermissionAndSchedule() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {

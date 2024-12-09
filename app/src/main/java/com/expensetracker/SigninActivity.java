@@ -63,6 +63,7 @@ public class SigninActivity extends AppCompatActivity {
         mForgotPassword = findViewById(R.id.forgot_password);
 
         // Button click to log in the user
+
         btnLogin.setOnClickListener(view -> {
             // Find views by ID
             TextInputLayout emailLayout = findViewById(R.id.emailLayout);
