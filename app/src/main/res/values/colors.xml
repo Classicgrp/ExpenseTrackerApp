@@ -11,9 +11,7 @@
     <color name="colorSecondary">#98C1D9</color>
     <color name="colorOnSecondary">#006FD7</color>
 
-
     <color name="backgroundLight">#E0FBFC</color>
-
     <color name="backgroundDark">#000000</color>
     <color name="surface">#FFFFFF</color>
     <color name="error">#B00020</color>

@@ -15,7 +15,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-    private Button signUpbtn;
+    private Button signUpbtn, googleBtn;
     private TextView Signintxt;
     private FirebaseAuth mAuth;
 

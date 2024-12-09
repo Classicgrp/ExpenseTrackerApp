@@ -35,7 +35,7 @@ public class BottomSheetCategoryDialog extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.fragment_bottom_sheet_category_dialog, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view_bottom_sheet);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));  // Set to 3 columns
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));  // Set to 3 columns
 
         // Initialize Firestore and Auth
         db = FirebaseFirestore.getInstance();

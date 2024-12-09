@@ -149,7 +149,8 @@ public class AddIncomeFragment extends Fragment implements CategoryBottomSheetDi
                 .collection("income")
                 .document(id)
                 .set(income)
-                .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Income saved", Toast.LENGTH_SHORT).show())
+                .addOnSuccessListener(aVoid -> {Toast.makeText(getContext(), "Income saved", Toast.LENGTH_SHORT).show();
+                    getActivity().finish();})
                 .addOnFailureListener(e -> Toast.makeText(getContext(), "Error saving income", Toast.LENGTH_SHORT).show());
     }
 }
