@@ -2,9 +2,13 @@ package com.expensetracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -24,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class SignupActivity extends AppCompatActivity {
 
     private EditText Name, Email, Password, ConfirmPassword;
+    private CheckBox Agree;
     private Button btnreg;
     private TextView mSignin;
     private ProgressBar progressBar;
@@ -65,22 +70,25 @@ public class SignupActivity extends AppCompatActivity {
         ConfirmPassword = findViewById(R.id.confirm_password_signup);
         btnreg = findViewById(R.id.btn_signup);
         mSignin = findViewById(R.id.login_here);
+        Agree = findViewById(R.id.agree_data_processing);
+
+        TextInputLayout nameLayout = findViewById(R.id.nameLayout);
+        TextInputLayout emailLayout = findViewById(R.id.emailLayout);
+        TextInputLayout passwordLayout = findViewById(R.id.passwordLayout);
+        TextInputLayout confirmPasswordLayout = findViewById(R.id.confirmPasswordLayout);
+
+        // Add text watchers for validation
+        addTextWatchers(emailLayout, passwordLayout, confirmPasswordLayout);
 
         // Button click to register a new user
         btnreg.setOnClickListener(view -> {
-            // Find views by ID
-            TextInputLayout nameLayout = findViewById(R.id.nameLayout);
-            TextInputLayout emailLayout = findViewById(R.id.emailLayout);
-            TextInputLayout passwordLayout = findViewById(R.id.passwordLayout);
-            TextInputLayout confirmPasswordLayout = findViewById(R.id.confirmPasswordLayout);
+            boolean isValid = true;
 
+            // Find views by ID
             String my_name = Name.getText().toString().trim();
             String my_email = Email.getText().toString().trim();
             String Pass = Password.getText().toString().trim();
             String confirmPass = ConfirmPassword.getText().toString().trim();
-
-            // Validate inputs
-            boolean isValid = true;
 
             if (TextUtils.isEmpty(my_name)) {
                 nameLayout.setError("Name is required");
@@ -97,24 +105,37 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             if (TextUtils.isEmpty(Pass)) {
-                passwordLayout.setError("Password is required");
+                passwordLayout.setError("Password cannot be empty");
+                isValid = false;
+            } else if (Pass.length() < 8) {
+                passwordLayout.setError("Password must be at least 8 characters");
                 isValid = false;
             } else {
                 passwordLayout.setError(null); // Clear error
             }
 
             if (TextUtils.isEmpty(confirmPass)) {
-                confirmPasswordLayout.setError("Confirm Password is required");
+                confirmPasswordLayout.setError("Confirm password is required");
                 isValid = false;
-            } else if (!Pass.equals(confirmPass)) {
+            } else if (!confirmPass.equals(Pass)) {
                 confirmPasswordLayout.setError("Passwords do not match");
                 isValid = false;
             } else {
                 confirmPasswordLayout.setError(null); // Clear error
             }
 
+            // Validate CheckBox
+            TextView errorTextView = findViewById(R.id.errorTextView); // A TextView to display the error message
+            if (!Agree.isChecked()) {
+                errorTextView.setText("You must agree to the terms and conditions.");
+                errorTextView.setVisibility(View.VISIBLE); // Make sure error text is visible
+                isValid = false;
+            } else {
+                errorTextView.setVisibility(View.GONE); // Clear error message
+            }
+
             if (!isValid) {
-                return;
+                return; // Stop if validation fails
             }
 
             progressBar.setVisibility(View.VISIBLE); // Show progress bar
@@ -151,6 +172,74 @@ public class SignupActivity extends AppCompatActivity {
         mSignin.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), SigninActivity.class)));
     }
 
+    // TextWatcher for validation
+    private void addTextWatchers(TextInputLayout emailLayout, TextInputLayout passwordLayout, TextInputLayout confirmPasswordLayout) {
+        // Email validation
+        Email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String email = editable.toString().trim();
+                if (TextUtils.isEmpty(email)) {
+                    emailLayout.setError("Email is required");
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    emailLayout.setError("Invalid email address");
+                } else {
+                    emailLayout.setError(null); // Clear error
+                }
+            }
+        });
+
+        // Password validation
+        Password.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String password = s.toString().trim();
+                if (TextUtils.isEmpty(password)) {
+                    passwordLayout.setError("Password cannot be empty");
+                } else if (password.length() < 8) {
+                    passwordLayout.setError("Password must be at least 8 characters long");
+                } else {
+                    passwordLayout.setError(null); // Clear error
+                }
+            }
+        });
+
+        // Confirm Password validation
+        ConfirmPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String confirmPassword = s.toString().trim();
+                String password = Password.getText().toString().trim();  // Get the password value
+
+                if (TextUtils.isEmpty(confirmPassword)) {
+                    confirmPasswordLayout.setError("Confirm password is required");
+                } else if (!confirmPassword.equals(password)) {
+                    confirmPasswordLayout.setError("Passwords do not match");
+                } else {
+                    confirmPasswordLayout.setError(null); // Clear error
+                }
+            }
+        });
+    }
+
     // User class to store user data
     public static class User {
         private String name;
@@ -178,6 +267,5 @@ public class SignupActivity extends AppCompatActivity {
 
         public void setEmail(String email) {
             this.email = email;
-        }
-    }
-}
+ }
+}}
