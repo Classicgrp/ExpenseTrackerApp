@@ -96,11 +96,11 @@
     <string name="accounts">Accounts</string>
     <string name="app_logo">App Logo</string>
     <string name="expense_tracker">Expense Tracker</string>
-    <string name="views">Views</string>
-    <string name="version">Version 1.0</string>
+    <string name="reports">Reports</string>
+    <string name="version">Version %1$s</string>
     <string name="app_description">Expense Tracker helps you manage and track your expenses effectively. It allows you to keep track of your transactions, set budgets, and gain insights into your spending habits.</string>
     <string name="developed_by">Developed by: Classic Group</string>
-    <string name="contact">Contact: classicgroup@gmail.com</string>
+    <string name="contact">Contact: class.classicgroup@gmail.com</string>
 
     <string name="accounts_list">Accounts List</string>
     <string name="account_name">Account Name</string>
@@ -119,6 +119,7 @@
     <string name="good_morning">Good Morning</string>
     <string name="good_afternoon">Good Afternoon</string>
     <string name="good_evening">Good Evening</string>
+
 
 </resources>
 

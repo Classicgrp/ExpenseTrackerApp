@@ -87,10 +87,10 @@
 
         <string name="transactions">Miamala</string>
         <string name="accounts">Akaunti</string>
-        <string name="views">Tazama</string>
+        <string name="reports">Ripoti</string>
         <string name="app_logo">Nembo ya Programu</string>
         <string name="expense_tracker">Kifuatiliaji Matumizi</string>
-        <string name="version">Toleo 1.0</string>
+        <string name="version">Toleo %1$s</string>
         <string name="app_description">Kifuatiliaji Matumizi kinakusaidia kudhibiti na kufuatilia matumizi yako kwa ufanisi. Inakuruhusu kufuatilia miamala yako, kuweka bajeti, na kupata ufahamu kuhusu tabia zako za matumizi.</string>
         <string name="developed_by">Imetengenezwa na: Classic Group</string>
         <string name="contact">Mawasiliano: classicgroup@gmail.com</string>

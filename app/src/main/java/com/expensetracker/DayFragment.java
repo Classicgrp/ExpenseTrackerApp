@@ -1,6 +1,7 @@
 package com.expensetracker;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,20 +77,22 @@ public class DayFragment extends Fragment {
     private void fetchAndDisplayData(int year, int month, int dayOfMonth) {
         // Clear the previous data from the list
         transactionList.clear();
-        transactionAdapter.notifyDataSetChanged();  // Notify adapter that the data set has changed
+        transactionAdapter.notifyDataSetChanged();
 
-        // Create Calendar instances for the start and end of the day
+        // Adjust Calendar instance for local time zone
         Calendar startOfDay = Calendar.getInstance();
         startOfDay.set(year, month, dayOfMonth, 0, 0, 0);
         startOfDay.set(Calendar.MILLISECOND, 0);
-        Timestamp startTimestamp = new Timestamp(startOfDay.getTime());
 
         Calendar endOfDay = Calendar.getInstance();
-        endOfDay.set(year, month, dayOfMonth, 23, 59, 59);  // Set to just before midnight
+        endOfDay.set(year, month, dayOfMonth, 23, 59, 59);
         endOfDay.set(Calendar.MILLISECOND, 999);
+
+        // Convert local time to UTC for Firestore queries
+        Timestamp startTimestamp = new Timestamp(startOfDay.getTime());
         Timestamp endTimestamp = new Timestamp(endOfDay.getTime());
 
-        // Fetch expenses and income for the selected date
+        // Fetch transactions for the selected day
         fetchTransactions(expensesRef, startTimestamp, endTimestamp, "Expense");
         fetchTransactions(incomeRef, startTimestamp, endTimestamp, "Income");
     }
@@ -100,20 +103,18 @@ public class DayFragment extends Fragment {
                 .orderBy("date", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
-                        for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
+                    if (queryDocumentSnapshots != null) {
+                        for (DocumentSnapshot document : queryDocumentSnapshots) {
                             FinancialTransaction transaction = document.toObject(FinancialTransaction.class);
                             if (transaction != null) {
                                 transaction.setType(type);
                                 transactionList.add(transaction);
+                                Log.d("DayFragment", "Fetched transaction: " + transaction.getType() + " - " + transaction.getAmount());
                             }
                         }
-                        // Notify the adapter to refresh the transaction list
-                        transactionAdapter.notifyDataSetChanged();
-                        updateAnalysis();
-                    } else {
-                        displayNoTransactionsMessage();
                     }
+                    transactionAdapter.notifyDataSetChanged();
+                    updateAnalysis(); // Ensure this is called only once after both income and expense fetching is complete
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Failed to fetch transactions", Toast.LENGTH_SHORT).show();
@@ -125,20 +126,20 @@ public class DayFragment extends Fragment {
         double totalExpense = 0.0;
 
         for (FinancialTransaction transaction : transactionList) {
-            if (transaction.getType().equals("Income")) {
-                totalIncome += transaction.getAmount();  // Add to totalIncome if it's income
+            if ("Income".equals(transaction.getType())) {
+                totalIncome += transaction.getAmount();
             } else {
-                totalExpense += transaction.getAmount();  // Add to totalExpense if it's an expense
+                totalExpense += transaction.getAmount();
             }
         }
 
-        // Update the analysis section
+        // Update UI elements
         double balance = totalIncome - totalExpense;
         binding.incomeTextView.setText("Income: \n" + totalIncome);
-        binding.expenseTextView.setText("Expense: \n " + totalExpense);
-        binding.balanceTextView.setText("Balance:\n " + balance);
+        binding.expenseTextView.setText("Expense: \n" + totalExpense);
+        binding.balanceTextView.setText("Balance:\n" + balance);
 
-        // Make analysis section visible
+        // Toggle visibility based on data availability
         if (transactionList.isEmpty()) {
             displayNoTransactionsMessage();
         } else {
@@ -150,5 +151,13 @@ public class DayFragment extends Fragment {
     private void displayNoTransactionsMessage() {
         binding.analysisSection.setVisibility(View.GONE);
         binding.noTransactionsTextView.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (!transactionList.isEmpty()) {
+            transactionAdapter.notifyDataSetChanged();
+        }
     }
 }

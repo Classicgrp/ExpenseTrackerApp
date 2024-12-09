@@ -122,7 +122,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Pick Date"
                         android:src="@drawable/baseline_calendar_today_24"
-                        app:tint="@color/blueDacnis" />
+                        app:tint="?attr/colorPrimary" />
 
                     <TextView
                         android:id="@+id/text_selected_date"
@@ -147,7 +147,7 @@
                         android:layout_height="24dp"
                         android:contentDescription="Pick Time"
                         android:src="@drawable/baseline_access_time_24"
-                        app:tint="@color/blueDacnis" />
+                        app:tint="?attr/colorPrimary" />
 
                     <TextView
                         android:id="@+id/text_selected_time"

@@ -20,7 +20,7 @@
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back"
+            android:src="@drawable/baseline_arrow_back_24"
             android:contentDescription="@string/back" />
 
         <TextView
@@ -30,7 +30,6 @@
             android:layout_weight="1"
             android:text="Add Category"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp" />
     </LinearLayout>
 
@@ -39,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_below="@id/toolbar"
-        android:background="?attr/colorOnPrimary" />
+        android:background="?attr/colorPrimary" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -52,42 +51,73 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Category Name Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category Name"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
             <!-- Category Name -->
             <EditText
                 android:id="@+id/category_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category Name"
+                android:hint="Enter category name"
                 android:inputType="text" />
+
+            <!-- Category Type Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category Type (Income or Expense)"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
             <!-- Category Type (Income or Expense) -->
             <Spinner
                 android:id="@+id/category_type_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:entries="@array/category_types" />
+
+            <!-- Category Icon Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category Icon"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
 
             <!-- Category Icon -->
             <ImageView
                 android:id="@+id/category_icon"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:src="@drawable/ic_more"
                 android:contentDescription="Category Icon"
                 android:background="?attr/selectableItemBackground"
                 android:onClick="selectIcon"
                 tools:ignore="OnClick" />
 
+            <!-- Category Description Label -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category Description"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp" />
+
             <!-- Category Description -->
             <EditText
                 android:id="@+id/category_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Description"
+                android:hint="Enter description"
                 android:inputType="textMultiLine"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="8dp" />
 
             <!-- Save Button -->
             <Button
@@ -99,4 +129,3 @@
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
-

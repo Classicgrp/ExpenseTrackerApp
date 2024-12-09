@@ -5,7 +5,6 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/main"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-    android:background="?attr/colorSecondary"
 tools:context=".SigninActivity">
 
 <!-- Main Container LinearLayout -->
@@ -29,7 +28,7 @@ tools:context=".SigninActivity">
             android:id="@+id/arrow_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/arrow_back"
+            android:src="@drawable/baseline_arrow_back_24"
             android:contentDescription="@string/back_button_desc"
             android:background="?attr/selectableItemBackground"
             app:tint="?attr/colorOnBackground" />
@@ -52,7 +51,6 @@ tools:context=".SigninActivity">
         android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical"
-        android:background="@drawable/background_shape"
         android:padding="20dp">
 
         <!-- Welcome Back Text -->
@@ -64,7 +62,6 @@ tools:context=".SigninActivity">
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnPrimary"
             android:layout_marginTop="10dp" />
 
         <!-- Email Field -->
@@ -117,7 +114,6 @@ tools:context=".SigninActivity">
             android:layout_marginTop="20dp"
            android:background="@drawable/button_background"
             android:text="@string/login_button"
-            android:textColor="?attr/colorOnBackground"
             android:textSize="16sp" />
 
         <!-- Forgot Password Link -->
@@ -126,7 +122,6 @@ tools:context=".SigninActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/forgot_password_link"
-            android:textColor="?attr/colorOnPrimary"
             android:textAlignment="center"
             android:padding="5dp"
             android:layout_marginTop="16dp" />
@@ -137,7 +132,6 @@ tools:context=".SigninActivity">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signup_link"
-            android:textColor="?attr/colorOnPrimary"
             android:textAlignment="center"
             android:padding="5dp"
             android:layout_marginTop="8dp" />

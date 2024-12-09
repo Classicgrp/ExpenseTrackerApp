@@ -15,9 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -122,27 +125,54 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void deleteAccount() {
-        String userId = mAuth.getCurrentUser().getUid();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            String userId = user.getUid();
 
-        // First delete Firestore document
-        db.collection("users").document(userId).delete()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // Once Firestore deletion is complete, proceed to delete the FirebaseAuth user
-                        mAuth.getCurrentUser().delete()
-                                .addOnCompleteListener(task1 -> {
-                                    if (task1.isSuccessful()) {
-                                        Toast.makeText(getApplicationContext(), "Account Deleted Successfully", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        finish();
-                                    } else {
-                                        Toast.makeText(getApplicationContext(), "Failed to delete account from FirebaseAuth", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Failed to delete account data from Firestore", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            // Delete all subcollections
+            deleteUserSubcollections(userId);
+
+            // Delete the user document itself
+            userRef.delete()
+                    .continueWithTask(task -> {
+                        if (!task.isSuccessful()) {
+                            throw task.getException(); // If Firestore deletion fails, throw an exception.
+                        }
+                        // After deleting Firestore data, attempt to delete the user account.
+                        return user.delete();
+                    })
+                    .addOnSuccessListener(aVoid -> {
+                        // After successfully deleting user data and account, redirect user to the login screen
+                        Toast.makeText(ProfileActivity.this, "User account deleted successfully.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(ProfileActivity.this, "Failed to delete user account or data.", Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+    private void deleteUserSubcollections(String userId) {
+        // Delete subcollections for expenses, income, budget, and categories
+        deleteCollection(db.collection("users").document(userId).collection("expenses"));
+        deleteCollection(db.collection("users").document(userId).collection("income"));
+        deleteCollection(db.collection("users").document(userId).collection("budget"));
+        deleteCollection(db.collection("users").document(userId).collection("categories"));
+    }
+
+    // Helper method to delete a collection
+    private void deleteCollection(CollectionReference collectionRef) {
+        collectionRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (DocumentSnapshot documentSnapshot : task.getResult()) {
+                    documentSnapshot.getReference().delete();
+                }
+            } else {
+                Toast.makeText(ProfileActivity.this, "Failed to fetch collection: " + task.getException(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

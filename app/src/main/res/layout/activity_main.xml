@@ -4,7 +4,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSecondary"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -24,7 +23,7 @@
             android:text="Welcome"
             android:textSize="32sp"
             android:fontFamily="sans-serif-black"
-            android:textColor="?attr/colorOnPrimary" />
+            android:textColor="?attr/colorPrimary" />
 
         <!-- To Expense Tracker Text -->
         <TextView
@@ -34,7 +33,7 @@
             android:text="to Expense Tracker"
             android:textSize="22sp"
             android:fontFamily="sans-serif-black"
-            android:textColor="?attr/colorOnPrimary" />
+            android:textColor="?attr/colorPrimary" />
 
         <!-- Wallet Image -->
         <ImageView
@@ -43,7 +42,7 @@
             android:layout_height="100dp"
             android:layout_margin="16dp"
             android:src="@drawable/app_icon"
-            app:tint="@color/chillyWhite" />
+            app:tint="?attr/colorPrimary" />
 
         <!-- Description Text -->
         <TextView
@@ -57,7 +56,7 @@
             android:paddingHorizontal="32dp"
             android:text="Track your expenses, manage budgets, and take control of your finances with ease."
             android:textSize="16sp"
-            android:textColor="?attr/colorOnPrimary" />
+            android:textColor="?attr/colorPrimary" />
 
         <!-- Create a Free Account Text -->
         <TextView
@@ -67,7 +66,7 @@
             android:layout_marginTop="102dp"
             android:text="Create a free account"
             android:textSize="14sp"
-            android:textColor="?attr/colorOnPrimary" />
+            android:textColor="?attr/colorPrimary" />
 
         <!-- Continue with Email Button -->
         <Button
@@ -76,7 +75,8 @@
             android:layout_width="match_parent"
             android:background="@drawable/button_background_transparent"
             android:layout_height="48dp"
-            android:text="Continue with Email" />
+            android:text="Continue with Email"
+            android:textColor="?attr/colorPrimary"/>
 
         <!-- Continue with Google Button -->
         <Button

@@ -42,7 +42,7 @@ public class AddCategoryActivity extends AppCompatActivity {
 
         saveCategoryButton.setOnClickListener(v -> saveCategory());
 
-        // Back button functionality
+
         ImageView backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(v -> finish());
 
@@ -98,7 +98,7 @@ public class AddCategoryActivity extends AppCompatActivity {
                 .set(newCategory)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(AddCategoryActivity.this, "Category saved successfully", Toast.LENGTH_SHORT).show();
-                    finish(); // Close the activity after saving
+                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(AddCategoryActivity.this, "Error saving category", Toast.LENGTH_SHORT).show();
