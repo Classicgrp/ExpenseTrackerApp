@@ -25,11 +25,12 @@ public class EditTransactionActivity extends AppCompatActivity {
 
     private EditText editTextAmount, editTextDescription, editTextCategory;
     private TextView textSelectedDate, textSelectedTime;
-    private ImageView iconSave, iconDelete;
+    private ImageView iconSave, iconDelete, arrowBack;
     private FirebaseFirestore db;
     private String transactionId, transactionType;
     private Calendar selectedCalendar = Calendar.getInstance();
-    private SimpleDateFormat dateTimeFormat = new SimpleDateFormat("EEE, d MMM yyyy, hh:mm a", Locale.getDefault());
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy", Locale.getDefault());
+    private SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class EditTransactionActivity extends AppCompatActivity {
         textSelectedTime = findViewById(R.id.text_selected_time);
         iconSave = findViewById(R.id.icon_save);
         iconDelete = findViewById(R.id.icon_delete);
+        arrowBack = findViewById(R.id.back_arrow);
+        arrowBack.setOnClickListener(view -> finish());
 
         db = FirebaseFirestore.getInstance();
 
@@ -86,8 +89,8 @@ public class EditTransactionActivity extends AppCompatActivity {
         editTextDescription.setText(description);
         editTextCategory.setText(category);
         selectedCalendar.setTime(date);
-        textSelectedDate.setText(dateTimeFormat.format(date));
-        textSelectedTime.setText(dateTimeFormat.format(date));
+        textSelectedDate.setText(dateFormat.format(date));
+        textSelectedTime.setText(timeFormat.format(date));
     }
 
     private void showDatePickerDialog() {
@@ -97,7 +100,7 @@ public class EditTransactionActivity extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view, year1, month1, dayOfMonth) -> {
             selectedCalendar.set(year1, month1, dayOfMonth);
-            textSelectedDate.setText(dateTimeFormat.format(selectedCalendar.getTime()));
+            textSelectedDate.setText(dateFormat.format(selectedCalendar.getTime()));
         }, year, month, day);
 
         datePickerDialog.show();
@@ -110,7 +113,7 @@ public class EditTransactionActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, (view, hourOfDay, minute1) -> {
             selectedCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
             selectedCalendar.set(Calendar.MINUTE, minute1);
-            textSelectedTime.setText(dateTimeFormat.format(selectedCalendar.getTime()));
+            textSelectedTime.setText(timeFormat.format(selectedCalendar.getTime()));
         }, hour, minute, false);
 
         timePickerDialog.show();
@@ -130,12 +133,18 @@ public class EditTransactionActivity extends AppCompatActivity {
         if (transactionType.equals("Expense")) {
             Expense expense = new Expense(transactionId, amount, description, category, date, "expense");
             docRef.set(expense)
-                    .addOnSuccessListener(aVoid -> Toast.makeText(EditTransactionActivity.this, "Transaction updated", Toast.LENGTH_SHORT).show())
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(EditTransactionActivity.this, "Transaction updated", Toast.LENGTH_SHORT).show();
+                        finish(); // Finish the activity after updating
+                    })
                     .addOnFailureListener(e -> Toast.makeText(EditTransactionActivity.this, "Error updating transaction: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         } else {
             Income income = new Income(transactionId, amount, description, category, date, "", "income");
             docRef.set(income)
-                    .addOnSuccessListener(aVoid -> Toast.makeText(EditTransactionActivity.this, "Transaction updated", Toast.LENGTH_SHORT).show())
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(EditTransactionActivity.this, "Transaction updated", Toast.LENGTH_SHORT).show();
+                        finish(); // Finish the activity after updating
+                    })
                     .addOnFailureListener(e -> Toast.makeText(EditTransactionActivity.this, "Error updating transaction: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         }
     }

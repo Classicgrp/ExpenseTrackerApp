@@ -42,27 +42,27 @@
             android:layout_gravity="end"/>
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/date_range"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:text="Date range"
-        android:padding="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="5dp"
-        android:textSize="16dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/date_range"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="viewStart"-->
+<!--        android:text="Date range"-->
+<!--        android:padding="8dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:textSize="16dp" />-->
 
-    <TextView
-        android:id="@+id/category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="viewStart"
-        android:text="Category"
-        android:padding="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="5dp"
-        android:textSize="16dp" />
+<!--    <TextView-->
+<!--        android:id="@+id/category"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="viewStart"-->
+<!--        android:text="Category"-->
+<!--        android:padding="8dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginTop="5dp"-->
+<!--        android:textSize="16dp" />-->
     <LinearLayout
         android:id="@+id/layoutExpense"
         android:orientation="horizontal"
@@ -71,10 +71,10 @@
         android:layout_marginTop="10dp"
         android:padding="10dp">
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:src="@drawable/arrow_upward"/>-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_upward"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,10 +92,10 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:src="@drawable/arrow_downward"/>-->
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_downward"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -24,12 +24,11 @@
             android:padding="12dp">
 
             <ImageView
-                android:id="@+id/lefticon"
+                android:id="@+id/back_arrow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="Back"
-                android:src="@drawable/baseline_arrow_back_24"
-                app:tint="?attr/colorOnPrimary" />
+                android:src="@drawable/baseline_arrow_back_24" />
 
             <TextView
                 android:id="@+id/edit_transaction"
@@ -37,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="Edit Transaction"
-                android:textColor="?attr/colorOnPrimary"
+                android:textStyle="bold"
                 android:textSize="20sp"
                 android:layout_weight="1" />
 
@@ -47,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="Delete"
                 android:src="@drawable/baseline_delete_24"
-                app:tint="?attr/colorOnPrimary"
                 android:layout_gravity="end" />
 
             <ImageView
@@ -56,7 +54,6 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="Save"
                 android:src="@drawable/baseline_check_24"
-                app:tint="?attr/colorOnPrimary"
                 android:layout_gravity="end"
                 android:layout_marginStart="16dp" />
         </LinearLayout>
