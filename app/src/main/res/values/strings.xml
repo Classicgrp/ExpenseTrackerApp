@@ -15,7 +15,6 @@
     <string name="forgot_password_link">Forgot Password?</string>
     <string name="signup_link">Don\'t have an account? Sign up</string>
     <string name="welcome_back">Welcome Back</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="change_password">Change Password</string>
     <string name="current_password_hint">Current Password</string>
@@ -51,11 +50,38 @@
     <string name="reset_data">Reset Data</string>
     <string name="help_support">Help and Support</string>
 
+
     <string name="faq">Frequently Asked Questions</string>
-    <string name="faq_content">Here you can add the content of the FAQ...</string>
+    <string name="faq_content">
+    1. What is ExpenseTracker?
+    ExpenseTracker helps you manage your finances by logging income, expenses, budgets, and generating reports.\n\n
+    2. How do I add an expense or income?
+    Click the floating action button, fill in details, and save.\n\n
+    3. What types of reports can I generate?
+    Expense and budget reports showing spending breakdowns.\n\n
+    4. Where can I view reports?
+    Check the Reports section.\n\n
+    5. What is the Analyses section?
+    Track daily and weekly trends with income, expenses, and balances and the view per day.\n\n
+    6. Can I add custom categories?
+    Yes, in the Categories section.\n\n
+    7. How can I manage budgets?
+    click button on homepage to set monthly budget and view them in budgets section.\n\n
+    8. Can I edit or delete transactions?
+    Yes, from Transactions or Home.\n\n
+    9. Is my data secure?
+    Data is securely stored with Firebase.\n\n
+    10. Can I use ExpenseTracker offline?
+    You need an internet connection for modifications.
+</string>
     <string name="contact_support">Contact Support</string>
-    <string name="contact_support_content">If you need further assistance, please contact our support team at support@expensemanagerclassic.com.</string>
+    <string name="contact_support_content">
+    Need help? Contact us:\n\n
+    Email: support@expensetracker.com\n
+    Phone: +254 112277715
+</string>
     <string name="submit_ticket">Submit a Ticket</string>
+
 
 
     <string name="error_fetching_expenses">Error fetching expenses</string>
@@ -78,7 +104,6 @@
 
     <string name="search_hint">Search...</string>
     <string name="welcome">Welcome!</string>
-    <string name="manage_expenses">Let\'s help you manage your expenses.</string>
     <string name="expenses">Expenses</string>
     <string name="expense_result">0.00</string>
     <string name="income">Income</string>
@@ -119,6 +144,14 @@
     <string name="good_morning">Good Morning</string>
     <string name="good_afternoon">Good Afternoon</string>
     <string name="good_evening">Good Evening</string>
+
+    <string name="forgot_password">Forgot Password</string>
+    <string name="reset_password_button">Reset Password</string>
+    <string name="prompt_text">Please enter the email you used to register, and we will send a reset password link in no time.</string>
+
+
+
+
 
 
 </resources>

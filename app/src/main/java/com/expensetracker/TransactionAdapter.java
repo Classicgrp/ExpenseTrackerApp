@@ -59,6 +59,11 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         return transactionList.size();
     }
 
+    public void updateList(List<FinancialTransaction> newList) {
+        transactionList = newList;
+        notifyDataSetChanged();
+    }
+
     public interface OnTransactionSelectedListener {
         void onTransactionSelected(FinancialTransaction transaction);
     }

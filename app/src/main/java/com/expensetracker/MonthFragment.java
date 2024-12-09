@@ -1,5 +1,6 @@
 package com.expensetracker;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,14 +23,15 @@ import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MonthFragment extends Fragment {
 
     private FragmentMonthBinding binding;
     private FirebaseFirestore db;
     private CollectionReference expensesRef, incomeRef;
-
     private PieChart expenseChart, incomeChart;
 
     @Override
@@ -64,7 +66,7 @@ public class MonthFragment extends Fragment {
     }
 
     private void fetchMonthData() {
-        // Get the current month (you can adjust this for a specific month if needed)
+        // Get the current month
         long currentTime = System.currentTimeMillis();
         Date startDate = new Date(currentTime - (currentTime % (30L * 24 * 60 * 60 * 1000))); // Start of the current month
         Date endDate = new Date(currentTime + (30L * 24 * 60 * 60 * 1000)); // End of the current month
@@ -82,16 +84,34 @@ public class MonthFragment extends Fragment {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
                         List<PieEntry> entries = new ArrayList<>();
+                        List<Integer> colors = new ArrayList<>();
+                        Map<String, Integer> categoryColors = new HashMap<>();
+
+                        // Initialize some default colors
+                        int[] colorPalette = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.CYAN, Color.MAGENTA};
+                        int colorIndex = 0;
 
                         for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                             FinancialTransaction transaction = document.toObject(FinancialTransaction.class);
                             if (transaction != null) {
                                 entries.add(new PieEntry(transaction.getAmount().floatValue(), transaction.getCategory()));
+
+                                // Assign colors dynamically
+                                if (!categoryColors.containsKey(transaction.getCategory())) {
+                                    if (colorIndex < colorPalette.length) {
+                                        categoryColors.put(transaction.getCategory(), colorPalette[colorIndex++]);
+                                    } else {
+                                        // Assign random color if palette is exhausted
+                                        categoryColors.put(transaction.getCategory(), Color.rgb((int) (Math.random() * 255), (int) (Math.random() * 255), (int) (Math.random() * 255)));
+                                    }
+                                }
+                                colors.add(categoryColors.get(transaction.getCategory()));
                             }
                         }
 
                         // Create a dataset and set it to the chart
                         PieDataSet dataSet = new PieDataSet(entries, "Transactions");
+                        dataSet.setColors(colors);
                         PieData data = new PieData(dataSet);
                         chart.setData(data);
                         chart.invalidate(); // Refresh the chart

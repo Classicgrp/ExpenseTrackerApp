@@ -48,8 +48,7 @@ public class NewBudgetActivity extends AppCompatActivity {
         saveBudgetButton = findViewById(R.id.save_budget_button);
         budgetPeriod = findViewById(R.id.budget_period);
         leftIcon = findViewById(R.id.back_button);
-        iconSave = findViewById(R.id.icon_save);
-        iconDelete = findViewById(R.id.icon_delete);
+
 
         // Apply window insets (to adjust padding for system bars like status bar and navigation bar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -60,8 +59,6 @@ public class NewBudgetActivity extends AppCompatActivity {
 
         // Toolbar Button Actions
         leftIcon.setOnClickListener(v -> getOnBackPressedDispatcher().onBackPressed());  // Back button
-
-        iconSave.setOnClickListener(v -> saveBudget());  // Save button
 
         // Set OnClickListener for the save button
         saveBudgetButton.setOnClickListener(v -> saveBudget());

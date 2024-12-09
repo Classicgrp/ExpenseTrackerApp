@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +36,8 @@ public class TransactionsActivity extends AppCompatActivity {
     private TransactionAdapter transactionAdapter;
     private List<FinancialTransaction> transactionList;
     private LinearLayout emptyStateLayout;
+    private FirebaseAuth mAuth;
+    private EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +47,30 @@ public class TransactionsActivity extends AppCompatActivity {
         ImageView leftIcon = findViewById(R.id.lefticon);
         leftIcon.setOnClickListener(view -> finish());
 
-        EditText searchBar = findViewById(R.id.search_bar);
-        searchBar.requestFocus();
+        searchBar = findViewById(R.id.search_bar);
+//        searchBar.requestFocus();
+
+        searchBar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Not needed
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterTransactions(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Not needed
+            }
+        });
 
         ImageView filterIcon = findViewById(R.id.filter);
         filterIcon.setOnClickListener(v -> showBottomDialog());
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() == null) {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show();
             return;
@@ -130,18 +151,53 @@ public class TransactionsActivity extends AppCompatActivity {
         LinearLayout incomeLayout = dialog.findViewById(R.id.layoutIncome);
         ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
 
-        expenseLayout.setOnClickListener(v -> dialog.dismiss());
+        expenseLayout.setOnClickListener(v -> {
+            dialog.dismiss();
+            filterByType("Expense");
+        });
+
         incomeLayout.setOnClickListener(v -> {
             dialog.dismiss();
-            Toast.makeText(TransactionsActivity.this, "Income", Toast.LENGTH_SHORT).show();
+            filterByType("Income");
         });
 
         cancelButton.setOnClickListener(v -> dialog.dismiss());
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void filterByType(String type) {
+        List<FinancialTransaction> filteredList = new ArrayList<>();
+        for (FinancialTransaction transaction : transactionList) {
+            if (transaction.getType().equals(type)) {
+                filteredList.add(transaction);
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No " + type.toLowerCase() + " transactions found", Toast.LENGTH_SHORT).show();
+        } else {
+            transactionAdapter.updateList(filteredList);
+        }
+    }
+
+    private void filterTransactions(String query) {
+        List<FinancialTransaction> filteredList = new ArrayList<>();
+        for (FinancialTransaction transaction : transactionList) {
+            if (transaction.getCategory().toLowerCase().contains(query.toLowerCase()) ||
+                    transaction.getId().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(transaction);
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(this, "No transactions found", Toast.LENGTH_SHORT).show();
+        } else {
+            transactionAdapter.updateList(filteredList);
+        }
     }
 }

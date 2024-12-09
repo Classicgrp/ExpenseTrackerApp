@@ -89,6 +89,8 @@ public class AddExpenseFragment extends Fragment {
         BottomSheetCategoryDialog bottomSheet = new BottomSheetCategoryDialog();
         bottomSheet.setOnCategorySelectedListener(category -> {
             selectedCategoryTextView.setText(category.getName());
+
+            bottomSheet.dismiss();
         });
         bottomSheet.show(getChildFragmentManager(), bottomSheet.getTag());
     }
@@ -132,7 +134,10 @@ public class AddExpenseFragment extends Fragment {
                     .collection("expenses")
                     .document(id)
                     .set(expense)
-                    .addOnSuccessListener(aVoid -> Toast.makeText(getContext(), "Expense saved", Toast.LENGTH_SHORT).show())
+                    .addOnSuccessListener(aVoid -> {
+                        Toast.makeText(getContext(), "Expense saved", Toast.LENGTH_SHORT).show();
+                        getActivity().finish();  // Close the current activity
+                    })
                     .addOnFailureListener(e -> Toast.makeText(getContext(), "Error saving expense: " + e.getMessage(), Toast.LENGTH_SHORT).show());
         } catch (NumberFormatException e) {
             Toast.makeText(getContext(), "Invalid amount entered. Please enter a valid number.", Toast.LENGTH_SHORT).show();

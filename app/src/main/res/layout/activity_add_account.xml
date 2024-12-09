@@ -29,7 +29,6 @@
             android:layout_weight="1"
             android:text="@string/add_account"
             android:textStyle="bold"
-            android:textColor="?attr/colorOnPrimary"
             android:textSize="20sp" />
     </LinearLayout>
 

@@ -23,15 +23,15 @@ public class HelpActivity extends AppCompatActivity {
         backIcon = findViewById(R.id.back_button);
         submitTicketButton = findViewById(R.id.submit_ticket_btn);
 
-        // Set click listener for back icon
+        // click listener for back icon
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Close the HelpActivity and return to the previous screen
+                finish();//  close the activity
             }
         });
 
-        // Set click listener for submit ticket button
+        // click listener for submit ticket button
         submitTicketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

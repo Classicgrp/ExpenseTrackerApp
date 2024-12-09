@@ -27,7 +27,6 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnreg;
     private TextView mSignin;
     private ProgressBar progressBar;
-
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
