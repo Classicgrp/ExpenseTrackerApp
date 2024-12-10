@@ -208,8 +208,8 @@ public class SignupActivity extends AppCompatActivity {
                 String password = s.toString().trim();
                 if (TextUtils.isEmpty(password)) {
                     passwordLayout.setError("Password cannot be empty");
-                } else if (password.length() < 8) {
-                    passwordLayout.setError("Password must be at least 8 characters long");
+                } else if (password.length() < 6) {
+                    passwordLayout.setError("Password must be at least 6 characters long");
                 } else {
                     passwordLayout.setError(null); // Clear error
                 }
