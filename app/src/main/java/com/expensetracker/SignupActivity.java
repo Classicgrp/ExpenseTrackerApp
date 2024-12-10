@@ -267,6 +267,5 @@ public class SignupActivity extends AppCompatActivity {
 
         public void setEmail(String email) {
             this.email = email;
-        }
-    }
-}
+ }
+}}

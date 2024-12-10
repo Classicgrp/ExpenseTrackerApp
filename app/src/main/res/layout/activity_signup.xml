@@ -163,7 +163,8 @@
                 android:textSize="14sp"
                 android:visibility="gone"
                 android:layout_marginTop="4dp"
-                android:text="You must agree to the terms and conditions." />
+                android:text="You must agree to the terms and conditions."/>
+
             <!-- Sign Up Button -->
             <Button
                 android:id="@+id/btn_signup"

@@ -11,7 +11,7 @@ public class Income {
     private String paymentMethod;
     private String type;
 
-    // Default constructor required for calls to DataSnapshot.getValue(Income.class)
+    // Default constructor required
     public Income() {
     }
 

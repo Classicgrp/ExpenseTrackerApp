@@ -23,7 +23,7 @@ public class AddCategoryActivity extends AppCompatActivity {
     private Button saveCategoryButton;
     private FirebaseFirestore db;
     private FirebaseAuth mAuth;
-    private int selectedIconResId = R.drawable.ic_more; // Default icon
+    private int selectedIconResId = R.drawable.baseline_category_24; // Default icon
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

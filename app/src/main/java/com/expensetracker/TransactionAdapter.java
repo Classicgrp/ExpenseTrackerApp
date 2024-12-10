@@ -37,7 +37,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
         FinancialTransaction transaction = transactionList.get(position);
-        holder.textAmount.setText(String.format(Locale.getDefault(), "Ksh, %.2f", transaction.getAmount()));
+        holder.textAmount.setText(String.format(Locale.getDefault(), "Ksh %,.2f", transaction.getAmount()));
         holder.textCategory.setText(transaction.getCategory());
         holder.textDate.setText(dateFormat.format(transaction.getDate()));
 
