@@ -107,8 +107,8 @@ public class SignupActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(Pass)) {
                 passwordLayout.setError("Password cannot be empty");
                 isValid = false;
-            } else if (Pass.length() < 8) {
-                passwordLayout.setError("Password must be at least 8 characters");
+            } else if (Pass.length() < 6) {
+                passwordLayout.setError("Password must be at least 6 characters");
                 isValid = false;
             } else {
                 passwordLayout.setError(null); // Clear error
@@ -127,7 +127,7 @@ public class SignupActivity extends AppCompatActivity {
             // Validate CheckBox
             TextView errorTextView = findViewById(R.id.errorTextView); // A TextView to display the error message
             if (!Agree.isChecked()) {
-                errorTextView.setText("You must agree to the terms and conditions.");
+                errorTextView.setText("You must agree to processing of personal data.");
                 errorTextView.setVisibility(View.VISIBLE); // Make sure error text is visible
                 isValid = false;
             } else {
