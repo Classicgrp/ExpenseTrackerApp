@@ -132,7 +132,7 @@ Simu: +254 112277715
         <string name="budget_amount_hint">Kiasi cha Bajeti</string>
         <string name="save_budget">Hifadhi Bajeti</string>
 
-        <string name="hi_user">Habari!</string>
+        <string name="hi">Habari!</string>
         <string name="good_morning">Habari za Asubuhi</string>
         <string name="good_afternoon">Habari za Mchana</string>
         <string name="good_evening">Habari za Jioni</string>

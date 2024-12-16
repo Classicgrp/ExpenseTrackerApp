@@ -4,7 +4,7 @@
     <solid android:color="?attr/colorPrimary"/>
 
     <!-- Button border -->
-    <stroke android:width="2dp" android:color="?attr/colorOnPrimary"/>
+    <stroke android:width="2dp" android:color="?attr/colorPrimary"/>
 
     <!-- Rounded corners with specific radius -->
     <corners

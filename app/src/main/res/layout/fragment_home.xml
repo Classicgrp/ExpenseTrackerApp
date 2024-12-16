@@ -26,14 +26,16 @@
             android:paddingEnd="16dp"
             android:src="@drawable/ic_action_name" />
 
-        <androidx.appcompat.widget.SearchView
-            android:id="@+id/search_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/search_bar_background"
-            android:queryHint="@string/search_hint"
-            app:iconifiedByDefault="false" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_view"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search here..."
+                android:background="@drawable/search_bar_background"
+                android:padding="8dp" />
 
         <ImageView
             android:id="@+id/bell_icon"
@@ -293,11 +295,46 @@
                 android:layout_marginTop="1dp"
                 android:padding="16dp"/>
 
+            <!-- No Transactions View -->
+            <LinearLayout
+                android:id="@+id/no_transactions_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/recycler_view_recent_transactions"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/no_transactions_image"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_transactions" />
+
+                <TextView
+                    android:id="@+id/no_transactions_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No transactions yet!"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/white"
+                    android:paddingTop="8dp"
+                    android:textAlignment="center" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Your latest transactions will appear here."
+                    android:textSize="12sp"
+                    android:textColor="@android:color/darker_gray"
+                    android:paddingTop="4dp"
+                    android:textAlignment="center" />
+            </LinearLayout>
             <TextView
                 android:id="@+id/budget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/recycler_view_recent_transactions"
+                android:layout_below="@+id/no_transactions_view"
                 android:text="@string/budgets"
                 android:textSize="18sp"
                 android:padding="8dp"

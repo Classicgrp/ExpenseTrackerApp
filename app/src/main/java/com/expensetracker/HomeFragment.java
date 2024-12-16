@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
     private TransactionAdapter recentTransactionAdapter;
     private List<FinancialTransaction> recentTransactionList;
     private ProgressBar progressBar;
+    private View noTransactionsView;
 
     private double totalExpenses = 0.0;
     private double totalIncome = 0.0;
@@ -71,6 +72,7 @@ public class HomeFragment extends Fragment {
         incomeSetResult = view.findViewById(R.id.income_set_result);
         balanceValue = view.findViewById(R.id.balance_value);
         progressBar = view.findViewById(R.id.progress_bar);
+        noTransactionsView = view.findViewById(R.id.no_transactions_view);
 
         set_budget = view.findViewById(R.id.button_setup_budget);
         set_budget.setOnClickListener(v -> {
@@ -78,22 +80,17 @@ public class HomeFragment extends Fragment {
             startActivity(intent);
         });
 
-        //recent transactions RecyclerView
+        // Recent transactions RecyclerView
         recentTransactionsRecyclerView = view.findViewById(R.id.recycler_view_recent_transactions);
         recentTransactionsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recentTransactionList = new ArrayList<>();
         recentTransactionAdapter = new TransactionAdapter(recentTransactionList, this::onTransactionSelected);
         recentTransactionsRecyclerView.setAdapter(recentTransactionAdapter);
 
-
         setUpIcons(view);
-
         displayGreetingMessage(view);
-
         loadTotalExpensesAndIncome();
-
         loadRecentTransactions();
-
         setupViewAllListener(view);
 
         return view;
@@ -143,14 +140,14 @@ public class HomeFragment extends Fragment {
                                 if (name != null && !name.isEmpty()) {
                                     userNameTextView.setText("Hi " + name + "!");
                                 } else {
-                                    userNameTextView.setText(getString(R.string.hi_user));
+                                    userNameTextView.setText(getString(R.string.hi));
                                 }
                             } else {
-                                userNameTextView.setText(getString(R.string.hi_user));
+                                userNameTextView.setText(getString(R.string.hi));
                             }
                         } else {
                             Log.d("Firestore", "Fetch failed: ", task.getException());
-                            userNameTextView.setText(getString(R.string.hi_user));
+                            userNameTextView.setText(getString(R.string.hi));
                         }
                     });
 
@@ -168,11 +165,10 @@ public class HomeFragment extends Fragment {
 
             greetingMessageTextView.setText(greeting);
         } else {
-            userNameTextView.setText(getString(R.string.hi_user));
+            userNameTextView.setText(getString(R.string.hi));
             greetingMessageTextView.setText(getString(R.string.welcome));
         }
     }
-
 
     private void setupViewAllListener(View view) {
         TextView viewAllTextView = view.findViewById(R.id.text_view_all);
@@ -256,6 +252,7 @@ public class HomeFragment extends Fragment {
                         } else {
                             Log.d("Firestore", "Error getting expenses: ", task.getException());
                             progressBar.setVisibility(View.GONE);
+                            updateNoTransactionsView();
                         }
                     });
         }
@@ -292,8 +289,21 @@ public class HomeFragment extends Fragment {
                         Log.d("Firestore", "Error getting income: ", task.getException());
                     }
                     progressBar.setVisibility(View.GONE);
+                    updateNoTransactionsView();
                 });
     }
+
+    private void updateNoTransactionsView() {
+        if (recentTransactionList.isEmpty()) {
+            noTransactionsView.setVisibility(View.VISIBLE);
+            recentTransactionsRecyclerView.setVisibility(View.GONE);
+        } else {
+            noTransactionsView.setVisibility(View.GONE);
+            recentTransactionsRecyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+
 
     private void onTransactionSelected(FinancialTransaction transaction) {
         Intent intent = new Intent(getActivity(), EditTransactionActivity.class);

@@ -47,8 +47,9 @@
         android:layout_height="38dp"
         android:layout_below="@id/toolbar"
         android:layout_marginTop="4dp"
-        android:background="@color/backgroundLight"
+
         android:foregroundGravity="center_horizontal"
+        android:background="?android:colorBackground"
         android:padding="2dp"
         app:tabGravity="fill"
         app:tabIndicatorColor="?attr/colorPrimary"

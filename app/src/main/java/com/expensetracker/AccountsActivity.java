@@ -51,78 +51,12 @@ public class AccountsActivity extends AppCompatActivity {
         });
 
         // Load accounts from Firestore
-        loadAccounts();
+//        loadAccounts();
     }
 
-    private void loadAccounts() {
-        String userId = mAuth.getCurrentUser().getUid();
-        db.collection("users").document(userId).collection("accounts")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot snapshots, @Nullable FirebaseFirestoreException e) {
-                        if (e != null) {
-                            Toast.makeText(AccountsActivity.this, "Error getting accounts", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+//    private void loadAccounts() {
+//        String userId = mAuth.getCurrentUser().getUid();
+//        db.collection("users").document(userId).collection("accounts")
+//    }
 
-                        if (snapshots != null) {
-                            accountsListLayout.removeAllViews();  // Clear the existing views
-                            for (DocumentChange dc : snapshots.getDocumentChanges()) {
-                                switch (dc.getType()) {
-                                    case ADDED:
-                                        Account account = dc.getDocument().toObject(Account.class);
-                                        addAccountToView(account);
-                                        break;
-                                    case MODIFIED:
-                                        // Handle modified documents if necessary
-                                        break;
-                                    case REMOVED:
-                                        // Handle removed documents if necessary
-                                        break;
-                                }
-                            }
-                        }
-                    }
-                });
-    }
-
-    private void addAccountToView(Account account) {
-        // Create a new LinearLayout for each account
-        LinearLayout accountLayout = new LinearLayout(this);
-        accountLayout.setOrientation(LinearLayout.HORIZONTAL);
-        accountLayout.setPadding(8, 8, 8, 8);
-        accountLayout.setBackgroundColor(getResources().getColor(R.color.white));
-        accountLayout.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-
-        // Create a TextView for account name
-        TextView accountNameTextView = new TextView(this);
-        accountNameTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                0,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1
-        ));
-        accountNameTextView.setText(account.getAccountName());
-        accountNameTextView.setTextColor(getResources().getColor(R.color.black));
-        accountNameTextView.setTextSize(16);
-
-        // Create a TextView for account balance
-        TextView accountBalanceTextView = new TextView(this);
-        accountBalanceTextView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-        ));
-        accountBalanceTextView.setText(account.getInitialBalance());
-        accountBalanceTextView.setTextColor(getResources().getColor(R.color.black));
-        accountBalanceTextView.setTextSize(16);
-
-        // Add TextViews to LinearLayout
-        accountLayout.addView(accountNameTextView);
-        accountLayout.addView(accountBalanceTextView);
-
-        // Add account layout to the main layout
-        accountsListLayout.addView(accountLayout);
-    }
 }

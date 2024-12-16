@@ -14,9 +14,15 @@ import java.util.List;
 public class IncomeCategoriesAdapter extends RecyclerView.Adapter<IncomeCategoriesAdapter.ViewHolder> {
 
     private List<IncomeCategory> incomeCategories;
+    private IncomeCategoriesAdapter.OnCategorySelectedListener listener;
 
-    public IncomeCategoriesAdapter(List<IncomeCategory> incomeCategories) {
+    public interface OnCategorySelectedListener {
+        void onCategorySelected(IncomeCategory category);
+    }
+
+    public IncomeCategoriesAdapter(List<IncomeCategory> incomeCategories, OnCategorySelectedListener listener) {
         this.incomeCategories = incomeCategories;
+        this.listener = listener;
     }
 
     @NonNull
@@ -32,6 +38,12 @@ public class IncomeCategoriesAdapter extends RecyclerView.Adapter<IncomeCategori
         IncomeCategory category = incomeCategories.get(position);
         holder.categoryName.setText(category.getName());
         holder.categoryIcon.setImageResource(category.getIconResId());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onCategorySelected(category);
+            }
+        });
     }
 
     @Override

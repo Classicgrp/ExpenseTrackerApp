@@ -1,5 +1,4 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -97,12 +96,12 @@
                 app:tint="?attr/colorPrimary" />
         </LinearLayout>
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
+            <!-- RecyclerView for Transactions -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
@@ -110,6 +109,7 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="16dp" />
 
+            <!-- No Transactions View -->
             <LinearLayout
                 android:id="@+id/empty_state_layout"
                 android:layout_width="match_parent"
@@ -119,6 +119,11 @@
                 android:visibility="gone"
                 android:layout_centerInParent="true">
 
+                <ImageView
+                    android:id="@+id/empty_state_image"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:src="@drawable/ic_transactions" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,21 +131,30 @@
                     android:textSize="18sp"
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginTop="8dp" />
-                
-                <ImageView
-                    android:id="@+id/empty_state_image"
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:src="@drawable/transaction_list_icon" />
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tap + to add one"
+                    android:text="Tap + to add"
                     android:textSize="16sp"
                     android:textColor="@android:color/darker_gray"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
+
         </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab_add_transaction"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:text="New"
+            android:textSize="12sp"
+            app:backgroundTint="?attr/colorPrimary"
+            android:textColor="@color/white"
+            app:icon="@drawable/add_icon"
+            app:iconTint="@color/white"
+            app:extendMotionSpec="@animator/extend_fab_motion"/>
+
     </LinearLayout>
 </RelativeLayout>

@@ -24,4 +24,8 @@
     <color name="red">#EE6C4D</color>
     <color name="green">#3D5A80</color>
 
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorBackgroundDark">#000000</color>
+
+
 </resources>

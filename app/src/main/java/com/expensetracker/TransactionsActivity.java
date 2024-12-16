@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +32,7 @@ import java.util.List;
 
 public class TransactionsActivity extends AppCompatActivity {
 
+    private ExtendedFloatingActionButton addButton;
     private FirebaseFirestore db;
     private CollectionReference incomeRef, expensesRef;
     private RecyclerView recyclerView;
@@ -47,8 +50,17 @@ public class TransactionsActivity extends AppCompatActivity {
         ImageView leftIcon = findViewById(R.id.lefticon);
         leftIcon.setOnClickListener(view -> finish());
 
+        // Initialize the floating action button
+        addButton = findViewById(R.id.fab_add_transaction);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TransactionsActivity.this, AddTransactionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         searchBar = findViewById(R.id.search_bar);
-//        searchBar.requestFocus();
 
         searchBar.addTextChangedListener(new TextWatcher() {
             @Override

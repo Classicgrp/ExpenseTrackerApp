@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
-public class AddIncomeFragment extends Fragment implements CategoryBottomSheetDialog.OnCategorySelectedListener, PaymentMethodBottomSheetDialog.OnPaymentMethodSelectedListener {
+public class AddIncomeFragment extends Fragment implements PaymentMethodBottomSheetDialog.OnPaymentMethodSelectedListener {
 
     private TextView textSelectedDatetime;
     private EditText etAmount, etPaymentMethod, etCategory, etDescription;
@@ -90,9 +90,16 @@ public class AddIncomeFragment extends Fragment implements CategoryBottomSheetDi
         timePickerDialog.show();
     }
 
+
+    // Show the BottomSheetCategoryDialog for selecting a category
     private void showCategoryBottomSheet() {
-        CategoryBottomSheetDialog categoryDialog = new CategoryBottomSheetDialog(Arrays.asList("Salary", "Gift", "Freelance", "Other"), this);
-        categoryDialog.show(getFragmentManager(), categoryDialog.getTag());
+        BottomSheetCategoryDialog bottomSheet = new BottomSheetCategoryDialog();
+        bottomSheet.setOnCategorySelectedListener(category -> {
+            etCategory.setText(category.getName());
+
+            bottomSheet.dismiss();
+        });
+        bottomSheet.show(getChildFragmentManager(), bottomSheet.getTag());
     }
 
     private void showPaymentMethodBottomSheet() {
@@ -100,10 +107,6 @@ public class AddIncomeFragment extends Fragment implements CategoryBottomSheetDi
         paymentMethodDialog.show(getFragmentManager(), paymentMethodDialog.getTag());
     }
 
-    @Override
-    public void onCategorySelected(String category) {
-        etCategory.setText(category);
-    }
 
     @Override
     public void onPaymentMethodSelected(String paymentMethod) {

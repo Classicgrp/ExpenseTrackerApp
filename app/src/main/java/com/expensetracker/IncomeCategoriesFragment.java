@@ -48,9 +48,11 @@ public class IncomeCategoriesFragment extends Fragment {
         incomeCategories.add(new IncomeCategory("Savings", R.drawable.ic_savings));
         incomeCategories.add(new IncomeCategory("Other", R.drawable.ic_more));
 
-        adapter = new IncomeCategoriesAdapter(incomeCategories);
-        recyclerView.setAdapter(adapter);
 
+        adapter = new IncomeCategoriesAdapter(incomeCategories, category -> {
+            // Handle category selection here if needed
+        });
+        recyclerView.setAdapter(adapter);
         // Load additional categories from Firestore
         loadCategoriesFromFirestore();
 

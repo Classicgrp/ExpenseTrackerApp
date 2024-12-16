@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">ExpenseTracker</string>
 
+    <string name="default_web_client_id">911154741660-jo7ffilpke9uqfaov9pfsre19dgg401q.apps.googleusercontent.com</string>
+
     <string name="back">Back</string>
     <string name="get_started">Let\'s Get Started</string>
     <string name="name_hint">Name</string>
@@ -83,7 +85,6 @@
     <string name="submit_ticket">Submit a Ticket</string>
 
 
-
     <string name="error_fetching_expenses">Error fetching expenses</string>
     <string name="error_fetching_income">Error fetching income</string>
     <string name="error_fetching_budget">Error fetching budget</string>
@@ -140,7 +141,7 @@
     <string name="budget_amount_hint">Budget Amount</string>
     <string name="save_budget">Save Budget</string>
 
-    <string name="hi_user">Hi User!</string>
+    <string name="hi">Hi!</string>
     <string name="good_morning">Good Morning</string>
     <string name="good_afternoon">Good Afternoon</string>
     <string name="good_evening">Good Evening</string>
@@ -149,11 +150,15 @@
     <string name="reset_password_button">Reset Password</string>
     <string name="prompt_text">Please enter the email you used to register, and we will send a reset password link in no time.</string>
 
-
-
-
-
-
+    <!-- Strings for CardView descriptions -->
+        <string name="transactions_icon">Transactions</string>
+        <string name="budgets_icon">Budgets</string>
+        <string name="accounts_icon">Accounts</string>
+        <string name="reports_icon">Reports</string>
+        <string name="goals_icon">Goals</string>
+        <string name="insights_icon">Insights</string>
+        <string name="expense_calendar_icon">Expense Calendar</string>
+        <string name="financial_health_icon">Financial Health</string>
 </resources>
 
 
