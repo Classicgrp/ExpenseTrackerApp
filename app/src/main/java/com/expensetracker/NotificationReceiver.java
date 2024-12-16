@@ -25,7 +25,7 @@ public class NotificationReceiver extends BroadcastReceiver {
                 context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.baseline_notifications_none_24)
+                .setSmallIcon(R.drawable.app_icon)
                 .setContentTitle("Reminder")
                 .setContentText("Don't forget to add today's expenses!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
