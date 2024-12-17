@@ -21,7 +21,6 @@ The **Expense Tracker App** is an Android application designed to help users man
 ## Screenshots
 
 
-
 1. **Home Screen**
 2. **Add Expense Screen**
 3. **Expense List Screen**
